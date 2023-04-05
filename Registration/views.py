@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
-from .models import Profile
+from django.contrib import messages
+from .models import Patient, Profile
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -7,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url='login')
 def HomePage(request):
-    return render(request,'home.html')
+    return render(request,'patient.html')
 
 def SignupPage(request):
     if request.method=='POST':
@@ -15,6 +16,8 @@ def SignupPage(request):
         fname = request.POST.get('fname')
         lname = request.POST.get('lname')
         email = request.POST.get('email')
+        # gender = request.POST.get('gender')
+        # relation = request.POST.get('relation')
         password = request.POST.get('password')
         re_password = request.POST.get('re_password')
         if password!=re_password:
@@ -30,13 +33,24 @@ def LoginPage(request):
     if request.method=='POST':
         username = request.POST.get('username')
         password = request.POST.get('your_pass')
-        user = authenticate(request,username=username,password=password)
-        if user is not None:
-            login(request,user)
-            return redirect('home')
+        parent = authenticate(request,username=username,password=password)
+        if parent is not None:
+            login(request,parent)
+            return redirect('patient')
         else:
             return HttpResponse('Username or password is incorrect')
+    
     return render (request,'login.html')
+
+
+def patientPage(request):
+    if request.method=='POST':
+        patient_name = request.POST.get('patient_name')
+        DoB = request.POST.get('DoB')
+        my_patient= Patient.objects.create(patient_name=patient_name,DoB=DoB)
+        my_patient.save()
+        return redirect ('home')
+    return render (request,'patient.html')
 
 
 def LogoutPage(request):

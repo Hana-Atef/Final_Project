@@ -1,4 +1,6 @@
 {% load static %}
+<!-- {% load crispy_forms_tags %} -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,27 +32,49 @@
 
                             <div class="form-group">
                                 <label for="fname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="fname" id="name1" placeholder="First Name" />
+                                <input type="text" name="fname" id="name1" placeholder="First Name" required />
                             </div>
                             <div class="form-group">
                                 <label for="lname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="lname" id="name2" placeholder="Last Name" />
+                                <input type="text" name="lname" id="name2" placeholder="Last Name" required/>
                             </div>
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="username" placeholder="User_Name" />
+                                <input type="text" name="username" id="username" placeholder="User_Name" required/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email" />
+                                <input type="email" name="email" id="email" placeholder="Your Email" required/>
                             </div>
+                            <!-- <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="gen"><i class="zmdi zmdi-male-female"></i>
+                                    </label>
+                                    <select name="gender" id="gender">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="relation"><i class="zmdi zmdi-face"></i>
+                                    </label>
+                                    <select name="relation" id="relation">
+                                        <option value="mother">Mother</option>
+                                        <option value="father">Father</option>
+                                        <option value="sister">Sister</option>
+                                        <option value="brother">Brother</option>
+                                        <option value="Grandma">Grandmother</option>
+                                        <option value="Grandpa">Grandfather</option>
+                                    </select>
+                                </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="password" id="password" placeholder="Password" />
+                                <input type="password" name="password" id="password" placeholder="Password" required />
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_password" id="re_password" placeholder="Repeat your password" />
+                                <input type="password" name="re_password" id="re_password" placeholder="Repeat your password" required/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
